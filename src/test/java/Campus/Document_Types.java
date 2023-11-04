@@ -34,14 +34,11 @@ public class Document_Types extends Hooks {
         newDocument.put("schoolId", "646cbb07acf2ee0d37c6d984");
 
         documentID =
-
                 given()
                         .spec(reqSpec)
                         .body(newDocument)
-
                         .when()
                         .post("school-service/api/attachments/create")
-
                         .then()
                         .contentType(ContentType.JSON)
                         .statusCode(201)
@@ -64,10 +61,8 @@ public class Document_Types extends Hooks {
         given()
                 .spec(reqSpec)
                 .body(newDocument)
-
                 .when()
                 .post("school-service/api/attachments/create")
-
                 .then()
                 .contentType(ContentType.JSON)
                 .statusCode(400)
@@ -90,10 +85,8 @@ public class Document_Types extends Hooks {
         given()
                 .spec(reqSpec)
                 .body(updateDocument)
-
                 .when()
                 .put("school-service/api/attachments")
-
                 .then()
                 .contentType(ContentType.JSON)
                 .statusCode(200)
@@ -104,10 +97,8 @@ public class Document_Types extends Hooks {
     public void deleteDocumentType() {
         given()
                 .spec(reqSpec)
-
                 .when()
                 .delete("school-service/api/attachments/" + documentID)
-
                 .then()
                 .statusCode(200);
     }
@@ -116,10 +107,8 @@ public class Document_Types extends Hooks {
     public void deleteDocumentTypeNegative() {
         given()
                 .spec(reqSpec)
-
                 .when()
                 .delete("school-service/api/attachments/" + documentID)
-
                 .then()
                 .statusCode(400)
                 .body("message", containsString("not found"));
