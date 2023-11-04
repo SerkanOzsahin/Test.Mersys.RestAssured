@@ -25,14 +25,11 @@ public class Nationalities extends Hooks {
         newNationality.put("name", rndNationalityName);
 
         nationalityID =
-
                 given()
                         .spec(reqSpec)
                         .body(newNationality)
-
                         .when()
                         .post("school-service/api/nationality")
-
                         .then()
                         .contentType(ContentType.JSON)
                         .statusCode(201)
@@ -47,10 +44,8 @@ public class Nationalities extends Hooks {
         given()
                 .spec(reqSpec)
                 .body(newNationality)
-
                 .when()
                 .post("school-service/api/nationality")
-
                 .then()
                 .contentType(ContentType.JSON)
                 .statusCode(400)
@@ -66,10 +61,8 @@ public class Nationalities extends Hooks {
         given()
                 .spec(reqSpec)
                 .body(updateNationality)
-
                 .when()
                 .put("school-service/api/nationality")
-
                 .then()
                 .contentType(ContentType.JSON)
                 .statusCode(200)
@@ -80,10 +73,8 @@ public class Nationalities extends Hooks {
     public void deleteNationality() {
         given()
                 .spec(reqSpec)
-
                 .when()
                 .delete("school-service/api/nationality/" + nationalityID)
-
                 .then()
                 .statusCode(200);
     }
@@ -92,10 +83,8 @@ public class Nationalities extends Hooks {
     public void deleteNationalityNegative() {
         given()
                 .spec(reqSpec)
-
                 .when()
                 .delete("school-service/api/nationality/" + nationalityID)
-
                 .then()
                 .statusCode(400)
                 .body("message", containsString("not  found"));

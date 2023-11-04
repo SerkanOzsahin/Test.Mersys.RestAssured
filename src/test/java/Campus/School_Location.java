@@ -33,14 +33,11 @@ public class School_Location extends Hooks {
         newSchoolLocation.put("school", "646cbb07acf2ee0d37c6d984");
 
         schoolID =
-
                 given()
                         .spec(reqSpec)
                         .body(newSchoolLocation)
-
                         .when()
                         .post("school-service/api/location")
-
                         .then()
                         .contentType(ContentType.JSON)
                         .statusCode(201)
@@ -60,10 +57,8 @@ public class School_Location extends Hooks {
         given()
                 .spec(reqSpec)
                 .body(newSchoolLocation)
-
                 .when()
                 .post("school-service/api/location")
-
                 .then()
                 .contentType(ContentType.JSON)
                 .statusCode(400)
@@ -84,10 +79,8 @@ public class School_Location extends Hooks {
         given()
                 .spec(reqSpec)
                 .body(updateSchoolLocation)
-
                 .when()
                 .put("school-service/api/location")
-
                 .then()
                 .contentType(ContentType.JSON)
                 .statusCode(200)
@@ -98,10 +91,8 @@ public class School_Location extends Hooks {
     public void deleteSchoolLocation() {
         given()
                 .spec(reqSpec)
-
                 .when()
                 .delete("/school-service/api/location/" + schoolID)
-
                 .then()
                 .statusCode(200);
     }
@@ -110,10 +101,8 @@ public class School_Location extends Hooks {
     public void deleteSchoolLocationNegative() {
         given()
                 .spec(reqSpec)
-
                 .when()
                 .delete("/school-service/api/location/" + schoolID)
-
                 .then()
                 .statusCode(400)
                 .body("message", containsString("not found"));
