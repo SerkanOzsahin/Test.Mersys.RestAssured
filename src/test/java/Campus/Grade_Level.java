@@ -30,10 +30,10 @@ public class Grade_Level extends Hooks{
         newGradeLevel.put("name", rndGradeLevelName);
         newGradeLevel.put("shortName",rndGradeLevelShortName);
         newGradeLevel.put("nextGradeLevel",null);
-        newGradeLevel.put("order", "1");
-        newGradeLevel.put("maxApplicationCount","5");
+        newGradeLevel.put("order", "143");
+        newGradeLevel.put("maxApplicationCount",55);
         newGradeLevel.put("active", true);
-        newGradeLevel.put("schoolIds","646cbb07acf2ee0d37c6d984");
+        newGradeLevel.put("schoolIds", new String[]{"646cbb07acf2ee0d37c6d984"});
         newGradeLevel.put("showToAllSchools", false);
         newGradeLevel.put("enableForSelectedSchools", true);
 
@@ -59,10 +59,10 @@ public class Grade_Level extends Hooks{
         newGradeLevel.put("name", gradeLevelName);
         newGradeLevel.put("shortName",gradeLevelShortName);
         newGradeLevel.put("nextGradeLevel",null);
-        newGradeLevel.put("order", "1");
-        newGradeLevel.put("maxApplicationCount","5");
+        newGradeLevel.put("order", "143");
+        newGradeLevel.put("maxApplicationCount",55);
         newGradeLevel.put("active", true);
-        newGradeLevel.put("schoolIds","646cbb07acf2ee0d37c6d984");
+        newGradeLevel.put("schoolIds", new String[]{"646cbb07acf2ee0d37c6d984"});
         newGradeLevel.put("showToAllSchools", false);
         newGradeLevel.put("enableForSelectedSchools", true);
 
@@ -87,10 +87,10 @@ public class Grade_Level extends Hooks{
         updateGradeLevel.put("name", "blair waldorf");
         updateGradeLevel.put("shortName","bw");
         updateGradeLevel.put("nextGradeLevel",null);
-        updateGradeLevel.put("order", "1");
-        updateGradeLevel.put("maxApplicationCount","5");
+        updateGradeLevel.put("order", "143");
+        updateGradeLevel.put("maxApplicationCount",55);
         updateGradeLevel.put("active", true);
-        updateGradeLevel.put("schoolIds","646cbb07acf2ee0d37c6d984");
+        updateGradeLevel.put("schoolIds", new String[]{"646cbb07acf2ee0d37c6d984"});
         updateGradeLevel.put("showToAllSchools", false);
         updateGradeLevel.put("enableForSelectedSchools", true);
 
@@ -117,7 +117,7 @@ public class Grade_Level extends Hooks{
                 .delete("school-service/api/grade-levels/" + gradeLevelID)
 
                 .then()
-                .statusCode(204);
+                .statusCode(200);
     }
 
     @Test(dependsOnMethods = "deleteGradeLevel")
