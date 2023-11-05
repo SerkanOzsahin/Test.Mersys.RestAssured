@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 
     public class Positions extends Hooks {
@@ -26,9 +25,11 @@ import static org.hamcrest.Matchers.equalTo;
             positionName = rndPositionName;
             positionShortName = rndPositionShortName;
 
-            Map<String, String> newPosition = new HashMap<>();
+            Map<String, Object> newPosition = new HashMap<>();
             newPosition.put("name", rndPositionName);
             newPosition.put("shortName",rndPositionShortName);
+            newPosition.put("tenantId","646cb816433c0f46e7d44cb0");
+            newPosition.put("active", true);
 
             positionID =
 
@@ -41,15 +42,18 @@ import static org.hamcrest.Matchers.equalTo;
 
                             .then()
                             .contentType(ContentType.JSON)
-                            .statusCode(400)
+                            .statusCode(201)
                             .extract().path("id");
         }
 
         @Test(dependsOnMethods = "createPosition")
         public void createPositionNegative() {
-            Map<String, String> newPosition = new HashMap<>();
+            Map<String, Object> newPosition = new HashMap<>();
             newPosition.put("name", positionName);
             newPosition.put("shortName",positionShortName);
+            newPosition.put("tenantId","646cb816433c0f46e7d44cb0");
+            newPosition.put("active", true);
+
             given()
                     .spec(reqSpec)
                     .body(newPosition)
@@ -66,10 +70,12 @@ import static org.hamcrest.Matchers.equalTo;
 
         @Test(dependsOnMethods = "createPositionNegative")
         public void updatePosition() {
-            Map<String, String> updatePosition = new HashMap<>();
+            Map<String, Object> updatePosition = new HashMap<>();
             updatePosition.put("id", positionID);
             updatePosition.put("name", "welder");
             updatePosition.put("shortName", positionShortName);
+            updatePosition.put("tenantId","646cb816433c0f46e7d44cb0");
+            updatePosition.put("active", true);
 
             given()
                     .spec(reqSpec)
@@ -80,7 +86,7 @@ import static org.hamcrest.Matchers.equalTo;
 
                     .then()
                     .contentType(ContentType.JSON)
-                    .statusCode(400)
+                    .statusCode(200)
                     .body("name",equalTo("welder"));
         }
 
@@ -105,8 +111,8 @@ import static org.hamcrest.Matchers.equalTo;
                     .delete("school-service/api/employee-position/" + positionID)
 
                     .then()
-                    .statusCode(400)
-                    .body("message", containsString("not found"));;
+                    .statusCode(204)
+                    .log().body();
         }
     }
 
