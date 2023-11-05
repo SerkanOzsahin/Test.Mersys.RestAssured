@@ -10,7 +10,7 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class Position extends Hooks {
+public class Positions_Category extends Hooks {
 
     String positionID = "";
 
