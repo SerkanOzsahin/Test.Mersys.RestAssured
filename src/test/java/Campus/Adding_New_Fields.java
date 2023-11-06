@@ -9,6 +9,7 @@ import static org.hamcrest.Matchers.*;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class Adding_New_Fields extends Hooks {
     String fieldsID = "";
     private String fieldsName;
