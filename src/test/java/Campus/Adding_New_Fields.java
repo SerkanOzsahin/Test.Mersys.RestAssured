@@ -22,7 +22,7 @@ public class Adding_New_Fields extends Hooks {
         Map<String, Object> newFields = new HashMap<>();
         newFields.put("name", rndFieldsName);
         newFields.put("active", true);
-        newFields.put("code", 100);
+        newFields.put("code", 111);
         newFields.put("type", "STRING");
         newFields.put("systemField", false);
         newFields.put("systemFieldName", null);
@@ -45,7 +45,7 @@ public class Adding_New_Fields extends Hooks {
         Map<String, Object> newFields = new HashMap<>();
         newFields.put("name", fieldsName);
         newFields.put("active", true);
-        newFields.put("code", 100);
+        newFields.put("code", 111);
         newFields.put("type", "STRING");
         newFields.put("systemField", false);
         newFields.put("systemFieldName", null);
@@ -69,7 +69,7 @@ public class Adding_New_Fields extends Hooks {
         updateNewFields.put("id", fieldsID);
         updateNewFields.put("name", "team3Edit110");
         updateNewFields.put("active", true);
-        updateNewFields.put("code", 100);
+        updateNewFields.put("code", 111);
         updateNewFields.put("type", "STRING");
         updateNewFields.put("systemField", false);
         updateNewFields.put("systemFieldName", null);
