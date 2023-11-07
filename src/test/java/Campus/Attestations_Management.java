@@ -1,22 +1,23 @@
 package Campus;
 
-import com.github.javafaker.Faker;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;
 
-
 public class Attestations_Management extends Hooks {
-    Faker randomData = new Faker();
-    String attestationsId;
-    String attestationsName;
+
+    private String attestationsId = "";
+    private String attestationsName = "";
 
     @Test
     public void createAttestation() {
-        attestationsName = randomData.name().fullName();
+        attestationsName = randomFaker.name().fullName();
+
         Map<String, String> newAttestation = new HashMap<>();
         newAttestation.put("name", attestationsName);
 
@@ -46,7 +47,6 @@ public class Attestations_Management extends Hooks {
                 .log().body()
                 .statusCode(400)
                 .body("message", containsString("already exists"));
-
     }
 
     @Test(dependsOnMethods = "createAttestationNegative")

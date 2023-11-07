@@ -1,24 +1,26 @@
 package Campus;
 
-import com.github.javafaker.Faker;
 import org.testng.annotations.Test;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;
 
 public class Configuring_Training_Subject_Categories extends Hooks {
-    Faker randomData = new Faker();
-    String subjectId;
 
-    String subjectName;
+    private String subjectId = "";
+    private String subjectName = "";
 
     @Test
     public void createSubject() {
-        subjectName = randomData.name().fullName();
+        subjectName = randomFaker.name().fullName();
+
         Map<String, String> newSubject = new HashMap<>();
         newSubject.put("name", subjectName);
-        newSubject.put("code", randomData.code().asin());
+        newSubject.put("code", randomFaker.code().asin());
+
         subjectId =
                 given()
                         .spec(reqSpec)
@@ -35,8 +37,7 @@ public class Configuring_Training_Subject_Categories extends Hooks {
     public void createSubjectNegative() {
         Map<String, String> newSubject = new HashMap<>();
         newSubject.put("name", subjectName);
-        newSubject.put("code", randomData.code().asin());
-
+        newSubject.put("code", randomFaker.code().asin());
 
         given()
                 .spec(reqSpec)
@@ -47,15 +48,15 @@ public class Configuring_Training_Subject_Categories extends Hooks {
                 .log().body()
                 .statusCode(400)
                 .body("message", containsString("already exists"));
-
     }
 
     @Test(dependsOnMethods = "createSubjectNegative")
     public void updateSubject() {
         Map<String, String> newSubject = new HashMap<>();
-        newSubject.put("code", randomData.code().asin());
+        newSubject.put("code", randomFaker.code().asin());
         newSubject.put("name", "grup3test");
         newSubject.put("id", subjectId);
+
         given()
                 .spec(reqSpec)
                 .body(newSubject)
@@ -69,8 +70,9 @@ public class Configuring_Training_Subject_Categories extends Hooks {
     @Test(dependsOnMethods = "updateSubject")
     public void updateSubjectNegative() {
         Map<String, String> newSubject = new HashMap<>();
-        newSubject.put("code", randomData.code().asin());
+        newSubject.put("code", randomFaker.code().asin());
         newSubject.put("name", "grup3test");
+
         given()
                 .spec(reqSpec)
                 .body(newSubject)
@@ -90,7 +92,6 @@ public class Configuring_Training_Subject_Categories extends Hooks {
                 .delete("school-service/api/subject-categories/" + subjectId)
                 .then()
                 .statusCode(200);
-
     }
 
     @Test(dependsOnMethods = "deleteSubject")
@@ -102,6 +103,5 @@ public class Configuring_Training_Subject_Categories extends Hooks {
                 .then()
                 .statusCode(404)
                 .body("message", containsString("not found"));
-
     }
 }

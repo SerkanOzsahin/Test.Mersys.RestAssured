@@ -10,9 +10,8 @@ import static org.hamcrest.Matchers.*;
 
 public class Document_Types extends Hooks {
 
-    private String documentName;
-    private String documentDescription;
-
+    private String documentName = "";
+    private String documentDescription = "";
     String documentID = "";
 
     @Test

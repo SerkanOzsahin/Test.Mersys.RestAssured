@@ -12,14 +12,14 @@ import static io.restassured.RestAssured.given;
 public class Departments extends Hooks {
 
     String departmentID = "";
-
-    private String departmentName;
-    private String departmentCode;
+    private String departmentName = "";
+    private String departmentCode = "";
 
     @Test
     public void createDepartments() {
         String rndDepartmentName = randomFaker.name().firstName();
         String rndDepartmentCode = randomFaker.number().digits(3);
+
         departmentName = rndDepartmentName;
         departmentCode = rndDepartmentCode;
 
@@ -28,6 +28,7 @@ public class Departments extends Hooks {
         newDepartment.put("code", rndDepartmentCode);
         newDepartment.put("active", true);
         newDepartment.put("school", "646cbb07acf2ee0d37c6d984");
+
         departmentID =
                 given()
                         .spec(reqSpec)

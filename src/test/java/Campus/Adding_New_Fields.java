@@ -9,10 +9,10 @@ import static org.hamcrest.Matchers.*;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class Adding_New_Fields extends Hooks {
-    String fieldsID = "";
-    private String fieldsName;
+
+    private String fieldsID = "";
+    private String fieldsName = "";
 
     @Test
     public void createFields() {
@@ -27,6 +27,7 @@ public class Adding_New_Fields extends Hooks {
         newFields.put("systemField", false);
         newFields.put("systemFieldName", null);
         newFields.put("schoolId", "646cbb07acf2ee0d37c6d984");
+
         fieldsID =
                 given()
                         .spec(reqSpec)

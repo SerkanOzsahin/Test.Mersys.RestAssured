@@ -10,11 +10,10 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class Positions_Category extends Hooks {
+public class Position_Categories extends Hooks {
 
     String positionID = "";
-
-    private String positionName;
+    private String positionName = "";
 
     @Test
     public void createPosition() {
@@ -23,6 +22,7 @@ public class Positions_Category extends Hooks {
 
         Map<String, String> newPosition = new HashMap<>();
         newPosition.put("name", rndPositionName);
+
         positionID =
                 given()
                         .spec(reqSpec)
@@ -39,6 +39,7 @@ public class Positions_Category extends Hooks {
     public void createPositionNegative() {
         Map<String, String> newPosition = new HashMap<>();
         newPosition.put("name", positionName);
+
         given()
                 .spec(reqSpec)
                 .body(newPosition)

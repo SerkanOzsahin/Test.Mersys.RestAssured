@@ -10,9 +10,10 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.equalTo;
 
 public class Editing_Bank_Accounts extends Hooks {
+
     String bankID = "";
-    private String bankName;
-    private String bankIban;
+    private String bankName = "";
+    private String bankIban = "";
 
     @Test
     public void createBankAccount() {
@@ -29,6 +30,7 @@ public class Editing_Bank_Accounts extends Hooks {
         newBank.put("currency", "TRY");
         newBank.put("active", true);
         newBank.put("schoolId", "646cbb07acf2ee0d37c6d984");
+
         bankID =
                 given()
                         .spec(reqSpec)

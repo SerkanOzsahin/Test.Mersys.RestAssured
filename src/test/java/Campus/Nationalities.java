@@ -11,14 +11,12 @@ import static org.hamcrest.Matchers.*;
 
 public class Nationalities extends Hooks {
 
-    private String nationalityName;
-
+    private String nationalityName = "";
     String nationalityID = "";
 
     @Test
     public void createNationality() {
         String rndNationalityName = randomFaker.country().name() + "12340";
-
         nationalityName = rndNationalityName;
 
         Map<String, String> newNationality = new HashMap<>();

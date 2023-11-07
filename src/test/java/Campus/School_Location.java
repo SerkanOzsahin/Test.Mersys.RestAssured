@@ -11,9 +11,8 @@ import static org.hamcrest.Matchers.*;
 
 public class School_Location extends Hooks {
 
-    private String schoolName;
-    private String schoolShortName;
-
+    private String schoolName = "";
+    private String schoolShortName = "";
     String schoolID = "";
 
     @Test

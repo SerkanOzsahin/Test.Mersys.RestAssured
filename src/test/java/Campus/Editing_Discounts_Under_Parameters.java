@@ -1,23 +1,24 @@
 package Campus;
 
-import com.github.javafaker.Faker;
 import org.testng.annotations.Test;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;
 
 public class Editing_Discounts_Under_Parameters extends Hooks {
-    Faker randomData = new Faker();
+
     String descriptionId;
     String descriptionName;
 
     @Test
     public void createDiscounts() {
-        descriptionName = randomData.name().firstName();
+        descriptionName = randomFaker.name().firstName();
         Map<String, String> newDiscounts = new HashMap<>();
         newDiscounts.put("description", descriptionName);
-        newDiscounts.put("code", randomData.code().asin());
+        newDiscounts.put("code", randomFaker.code().asin());
         newDiscounts.put("active", "true");
         newDiscounts.put("priority", "5");
 
@@ -37,7 +38,7 @@ public class Editing_Discounts_Under_Parameters extends Hooks {
     public void createDiscountsNegative() {
         Map<String, String> newDiscounts = new HashMap<>();
         newDiscounts.put("description", descriptionName);
-        newDiscounts.put("code", randomData.code().asin());
+        newDiscounts.put("code", randomFaker.code().asin());
         newDiscounts.put("active", "true");
         newDiscounts.put("priority", "5");
 
@@ -57,7 +58,7 @@ public class Editing_Discounts_Under_Parameters extends Hooks {
         Map<String, String> newDiscounts = new HashMap<>();
         newDiscounts.put("id", descriptionId);
         newDiscounts.put("description", "grup3test");
-        newDiscounts.put("code", randomData.code().asin());
+        newDiscounts.put("code", randomFaker.code().asin());
         newDiscounts.put("active", "true");
         newDiscounts.put("priority", "7");
 
@@ -75,7 +76,7 @@ public class Editing_Discounts_Under_Parameters extends Hooks {
     public void updateDiscountsNegative() {
         Map<String, String> newDiscounts = new HashMap<>();
         newDiscounts.put("description", "grup3test");
-        newDiscounts.put("code", randomData.code().asin());
+        newDiscounts.put("code", randomFaker.code().asin());
         newDiscounts.put("active", "true");
         newDiscounts.put("priority", "7");
 
